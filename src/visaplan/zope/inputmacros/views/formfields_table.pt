@@ -278,7 +278,7 @@ value value | python:current and current.get(name) or None;
   </td>
   <td tal:attributes="colspan python:not oneline and 2 or None">
     <metal:slot define-slot="specific-input">
-    <input metal:use-macro="here/formfields_table-base/macros/wide-text-input"/>
+    <input metal:use-macro="context/formfields_table-base/macros/wide-text-input"/>
     </metal:slot>
   </td>
 </tr><!-- ... simple_field ] -->
@@ -290,7 +290,7 @@ value value | python:current and current.get(name) or None;
 <p>Mehrzeiliges Eingabefeld</p>
 <table>
 <metal:mac define-macro="textarea"
-           extend-macro="here/formfields_table-base/macros/base_field">
+           extend-macro="context/formfields_table-base/macros/base_field">
     <metal:slot fill-slot="specific-input"
                 define-slot="specific-input">
     <textarea tal:attributes="readonly readonly;
@@ -313,7 +313,7 @@ korrekt in das Formular zu integrieren
 </p>
 <table>
 <metal:mac define-macro="empty"
-           extend-macro="here/formfields_table-base/macros/base_field">
+           extend-macro="context/formfields_table-base/macros/base_field">
     <metal:slot fill-slot="specific-input"
                 define-slot="specific-input">
     Makro <tt>empty</tt>:
@@ -325,7 +325,7 @@ korrekt in das Formular zu integrieren
 <h3 id="date_field">date_field</h3>
 <table>
 <metal:mac define-macro="date_field"
-           extend-macro="here/formfields_table-base/macros/base_field">
+           extend-macro="context/formfields_table-base/macros/base_field">
 <strong>
 ACHTUNG:
 </strong>
@@ -346,7 +346,7 @@ Siehe http://dev-wiki.unitracc.de/wiki/Datepicker
 <h3 id="hyperlink_field">hyperlink_field</h3>
 <table>
 <metal:mac define-macro="hyperlink_field"
-           extend-macro="here/formfields_div-base/macros/base_field">
+           extend-macro="context/formfields_div-base/macros/base_field">
     <metal:slot fill-slot="specific-input"
                 define-slot="specific-input">
     <div tal:condition="value">
@@ -357,7 +357,7 @@ Siehe http://dev-wiki.unitracc.de/wiki/Datepicker
     </div>
     <tal:ns define="type string:url">
     <input type="url"
-    metal:use-macro="here/formfields_table-base/macros/wide-text-input"/>
+    metal:use-macro="context/formfields_table-base/macros/wide-text-input"/>
     </tal:ns>
     </metal:slot>
 </metal:mac>
@@ -371,7 +371,7 @@ Siehe http://dev-wiki.unitracc.de/wiki/Datepicker
 name request/file_name | string:anhang;
 ">
 <metal:mac define-macro="file_field"
-           extend-macro="here/formfields_div-base/macros/base_field">
+           extend-macro="context/formfields_div-base/macros/base_field">
     <metal:slot fill-slot="specific-input"
                 define-slot="specific-input">
     <tal:ns define="
@@ -515,7 +515,7 @@ mit vorangestelltem Schlüsselwert
 </p>
 <table>
 <metal:mac define-macro="select_single_wkey"
-           extend-macro="here/formfields_table-base/macros/base_field">
+           extend-macro="context/formfields_table-base/macros/base_field">
     <metal:slot fill-slot="specific-input"
                 define-slot="specific-input">
     <tal:ns define="
@@ -565,7 +565,7 @@ choices choices | python:pool[name];
 <p>(Kopiervorlage für neue Makros)</p>
 <table>
 <metal:mac define-macro="skeleton"
-           extend-macro="here/formfields_table-base/macros/base_field">
+           extend-macro="context/formfields_table-base/macros/base_field">
     <metal:slot fill-slot="specific-input"
                 define-slot="specific-input">
     Neues Makro <tt>skeleton</tt>:
