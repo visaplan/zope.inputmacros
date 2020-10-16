@@ -3,12 +3,6 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <title>Basismakros für Formularfelder mit Labels (table-Version)</title>
-<!--
-<link rel="stylesheet" type="text/css" href="FIXME">
-<script type="text/javascript" src="FIXME"></script>
-<style type="text/css">
-</style>
--->
 </head>
 <body tal:define="
 name string:beispiel;
@@ -81,10 +75,10 @@ omit_elem python:readonly and omit_empty and not value;
            class="input-block-level text"
            style="width: 98%; margin: 0 3px;"
            tal:define="
-           type type | string:text;
-           appendtype python:(type == 'text'
+           inputtype inputtype | string:text;
+           appendtype python:(inputtype == 'text'
                               and not readonly
-                              ) and (' '+type) or '';
+                              ) and (' '+inputtype) or '';
            cls python:(inputclass + appendtype) or None;
            "
            tal:attributes="name python:(not readonly
@@ -92,7 +86,7 @@ omit_elem python:readonly and omit_empty and not value;
                            id name;
                            value value;
                            readonly readonly;
-                           type type | string:text;
+                           type inputtype | string:text;
                            class cls;
                            ">
 </metal:mac>                           

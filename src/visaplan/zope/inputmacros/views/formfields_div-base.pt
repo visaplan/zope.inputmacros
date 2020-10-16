@@ -3,12 +3,6 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <title>Basismakros für Formularfelder mit Labels (div-Version)</title>
-<!--
-<link rel="stylesheet" type="text/css" href="FIXME">
-<script type="text/javascript" src="FIXME"></script>
-<style type="text/css">
-</style>
--->
 </head>
 <body tal:define="
 name string:beispiel;
@@ -99,13 +93,13 @@ requiredfields_name requiredfields_name | string:requiredfields;
            class="input-block-level text"
            style="width: 98%; margin: 0 3px;"
            tal:define="
-           type type | string:text;
+           inputtype inputtype | string:text;
            readonly readonly | python:False;
            required required | python:False;
 value value | python:current and current.get(name) or None;
-           appendtype python:(type == 'text'
+           appendtype python:(inputtype == 'text'
                               and not readonly
-                              ) and (' '+type) or '';
+                              ) and (' '+inputtype) or '';
            cls python:(inputclass + appendtype) or None;
 autofocus autofocus | python:(first_missing is not None
                               and first_missing in (name, formname)
@@ -117,7 +111,7 @@ autofocus autofocus | python:(first_missing is not None
                            value value;
                            readonly readonly;
                            required python:required and 'required' or None;
-                           type type | string:text;
+                           type inputtype | string:text;
                            class cls;
                            autofocus autofocus;
                            ">

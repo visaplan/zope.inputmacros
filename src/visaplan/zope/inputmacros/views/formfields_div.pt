@@ -3,10 +3,6 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <title>Makros für Formularfelder mit Labels (div-Version)</title>
-<!--
-<link rel="stylesheet" type="text/css" href="FIXME">
-<script type="text/javascript" src="FIXME"></script>
--->
 <style type="text/css">
 table tbody td,
 table tbody th {
@@ -32,7 +28,6 @@ action string:TUNIX;
 readonly request/readonly | python:False;
 required request/required | python:False;
 labelwidth request/labelwidth | python:2;
-pformat python:context.getAdapter('pformat');
 pool python:{'beispiel': [{'id': 42, 'label': 'Die Antwort'},
                           {'id': 43, 'label': 'Eine andere Zahl', 'selected': 1}],
              'gruppiert': [{'group': 'präferiert',
@@ -139,7 +134,7 @@ debug request/debug | python:1;
   <!-- nur für bestimmte Makros: -->
   <tbody>
     <tr>
-      <th>type</th>
+      <th>inputtype</th>
       <td>Zeile</td>
       <td>text</td>
       <td>Nur für <a href="#simple_field">simple_field</a>: <tt>type</tt>-Attribut</td>
@@ -273,7 +268,6 @@ known known | formdata/all_ids | python:{};
 names names | python:known.keys();
 action form_action | action | string:BITTE ACTION ANGEBEN;
 debug debug | python:False;
-pformat nocall:pformat | python:debug and context.getAdapter('pformat') or None;
 ">
 <dl tal:condition="debug | nothing">
   <dt>action
@@ -291,7 +285,7 @@ pformat nocall:pformat | python:debug and context.getAdapter('pformat') or None;
   </dl>
   </dd>
   <dt>current
-  <dd><pre tal:content="python:pformat(current)">current</pre></dd>
+  <dd><tt tal:content="nocall:current">current</tt></dd>
 </dl>
 <form action="IMMER ANZUGEBEN"
       tal:attributes="action action;
@@ -453,7 +447,7 @@ Siehe http://dev-wiki.unitracc.de/wiki/Datepicker
            tal:content="value">http://Der aktuelle Wert
          </a>
     </div>
-    <tal:ns define="type string:url">
+    <tal:ns define="inputtype string:url">
     <input type="url"
     metal:use-macro="context/formfields_div-base/macros/wide-text-input"/>
     </tal:ns>
@@ -491,7 +485,7 @@ templatetest templatetest | python:False;
 debug debug | python:False;
 ">
 <table tal:condition="python:debug or templatetest">
- <thead tal:define="pformat nocall:pformat">
+ <thead>
   <tr>
     <th>Variable</th>
     <th>Wert (konkret)</th>
@@ -621,9 +615,7 @@ debug debug | python:False;
   <tr>
     <th>current</th>
     <td colspan="4">
-     <pre tal:content="python:pformat(current)"
-          tal:on-error="string:Fehler"
-          >current</pre>
+     <tt tal:content="nocall:current">current</tt>
     </td>
   </tr>
   <tr>
@@ -857,7 +849,6 @@ data_placeholder data_placeholder | string:Bitte wählen &hellip;;
 " tal:attributes="
 title title;
 " tal:condition="showme">
-<pre tal:content="choices" tal:condition="python:0"/>
     <label for="acronym"
            class="control-label"
            tal:attributes="for name">

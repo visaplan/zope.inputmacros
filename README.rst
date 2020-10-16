@@ -66,9 +66,8 @@ You'll need a language interpreter as well; this will be given in default
 Zope / Plone installations.
 We don't specify this here to allow you to choose your own.
 
-Starting with Plone 5, Chameleon_ is used;
-please use this for from-scratch use, and tell us about any problems you might
-suffer (since we didn't try yet ourselves.)
+Starting with Plone 5, Chameleon_ with the z3c.pt_ compatiblily layer is used;
+this should work as well.
 
 
 Contribute
@@ -97,5 +96,6 @@ The project is licensed under the GPLv2.
 .. _METAL: https://en.wikipedia.org/wiki/Template_Attribute_Language#METAL
 .. _TAL:  https://en.wikipedia.org/wiki/Template_Attribute_Language
 .. _Zope: https://pypi.org/project/Zope/
+.. _z3c.pt: https://pypi.org/project/z3c.pt
 
 .. vim: tw=79 cc=+1 sw=4 sts=4 si et

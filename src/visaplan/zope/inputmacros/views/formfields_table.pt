@@ -3,12 +3,6 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <title>Makros für Formularfelder mit Labels (table-Version)</title>
-<!--
-<link rel="stylesheet" type="text/css" href="FIXME">
-<script type="text/javascript" src="FIXME"></script>
-<style type="text/css">
-</style>
--->
 </head>
 <body tal:define="
 name string:beispiel;
@@ -90,7 +84,7 @@ pool python:{'beispiel': [{'id': 42, 'label': 'Die Antwort'},
   <!-- nur für bestimmte Makros: -->
   <tbody>
     <tr>
-      <th>type</th>
+      <th>inputtype</th>
       <td>Zeile</td>
       <td>text</td>
       <td>Nur für <a href="#simple_field">simple_field</a>: <tt>type</tt>-Attribut</td>
@@ -355,7 +349,7 @@ Siehe http://dev-wiki.unitracc.de/wiki/Datepicker
            tal:content="value">http://Der aktuelle Wert
          </a>
     </div>
-    <tal:ns define="type string:url">
+    <tal:ns define="inputtype string:url">
     <input type="url"
     metal:use-macro="context/formfields_table-base/macros/wide-text-input"/>
     </tal:ns>
