@@ -25,12 +25,13 @@ siehe <a href="formfields_div">formfields_div</a>
 <h3 id="base_field">base_field</h3>
 <metal:mac define-macro="base_field">
 <!-- [ base_field ... -->
-<div class="control-group" tal:define="
+<div class="form-group" tal:define="
 readonly   readonly | python:False;
 required   required | python:False;
 omit_empty omit_empty | python:True;
 oneline    oneline | python:True;
 labelwidth labelwidth | python:oneline and 2 or None;
+labelcolcls python:labelwidth and ('col-sm-%d' % labelwidth) or '';
 
 inputwidth python:labelwidth and (12 - labelwidth);
 inputcolcls python:inputwidth and ('col-sm-%d' % inputwidth) or '';
@@ -49,6 +50,7 @@ omit_elem python:readonly and omit_empty and not value;
     <label for="acronym"
            class="control-label"
            tal:attributes="for name;
+           class string:control-label ${labelcolcls};
            ">
         <span class="required"
               tal:condition="required | nothing"
